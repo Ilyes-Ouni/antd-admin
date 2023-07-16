@@ -1,0 +1,21 @@
+{
+  "builds": [
+    {
+      "src": "config/config.prod.ts",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist",
+        "outputDirectory": "public"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/$1",
+      "headers": {
+        "Cache-Control": "public, max-age=0, must-revalidate"
+      }
+    }
+  ]
+}
